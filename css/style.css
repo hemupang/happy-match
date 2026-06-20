@@ -85,16 +85,17 @@ body {
 }
 
 #gameCanvas {
-    /* 关键：让 Canvas 在窄屏幕上自动缩小 */
-    max-width: 100%;
-    height: auto !important;
-    aspect-ratio: 1 / 1;
+    display: block;
+    /* 核心：width:100% 强制填满容器，max-width 防止桌面端放大 */
+    width: 100%;
+    max-width: 490px;
+    height: auto;
     border-radius: 14px;
     cursor: pointer;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
     background: rgba(0, 0, 0, 0.2);
-    touch-action: manipulation; /* 禁止双击缩放 */
-    -webkit-tap-highlight-color: transparent; /* 去掉点击高亮 */
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
     user-select: none;
     -webkit-user-select: none;
 }
