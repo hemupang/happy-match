@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>🎮 开心消消乐</title>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- iOS / Android 主屏幕图标 -->
+    <link rel="icon" type="image/svg+xml" href="icon.svg">
+    <link rel="apple-touch-icon" href="icon.svg">
+
+    <!-- 移动端主题色 & 全屏 -->
+    <meta name="theme-color" content="#764ba2">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="消消乐">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <h1>🎮 开心消消乐</h1>
+            <div class="info-panel">
+                <div class="info-item">
+                    <span class="info-label">🏆 分数</span>
+                    <span class="info-value" id="score">0</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">👣 步数</span>
+                    <span class="info-value" id="moves">30</span>
+                </div>
+            </div>
+        </header>
+        <div class="board-wrapper">
+            <canvas id="gameCanvas"></canvas>
+        </div>
+        <footer class="game-footer">
+            <p class="hint">💡 点击棋子选中，再点击相邻棋子交换</p>
+        </footer>
+    </div>
+
+    <!-- Service Worker 注册（PWA 离线缓存） -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(() => console.log('[PWA] Service Worker 已注册'))
+                .catch((err) => console.log('[PWA] Service Worker 注册失败:', err));
+        }
+    </script>
+
+    <script src="js/board.js"></script>
+    <script src="js/renderer.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
